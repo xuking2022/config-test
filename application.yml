@@ -1,0 +1,56 @@
+spring:
+    cache:
+        type: redis
+    data:
+        mongodb:
+            uri: mongodb://xuking:lijuan83818@192.168.3.45:27017/test?authSource=admin
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: lijuan83818
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://127.0.0.1:3306/ssm?serverTimezone=UTC
+        username: root
+    mvc:
+        static-path-pattern: /**
+    rabbitmq:
+        host: 192.168.3.55
+        listener:
+            simple:
+                acknowledge-mode: manual
+        password: lijuan83818
+        port: 5672
+        username: xuking
+        virtual-host: /test
+        publisher-confirm-type: simple
+        publisher-returns: true
+    redis:
+        #database: 0
+        #单机模式
+        #port: 6379
+        #host: 192.168.3.45
+
+        #哨兵模式
+        #sentinel:
+        #    master: mymaster #哨兵的名字 #下面是所有哨兵集群节点
+        #    nodes: 192.168.3.55:9991,192.168.3.55:9992,192.168.3.55:9993
+
+        #集群模式
+        cluster:
+            # 集群节点
+            nodes: 192.168.3.65:9001,192.168.3.65:9002,192.168.3.65:9003,192.168.3.65:9004,192.168.3.65:9005,192.168.3.65:9006
+            # 最大重定向次数
+            max-redirects: 5
+        pool:
+            max-active: 8
+            max-idle: 8
+            max-wait: -1
+            min-idle: 0
+            enabled: true
+        #timeout: 0
+    web:
+        resources:
+            static-locations: classpath:/templates/,classpath:/static/
+
+client:
+    eqp_id: "xu.king"
+    eqt_id: "L.J"
